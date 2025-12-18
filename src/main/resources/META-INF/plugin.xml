@@ -14,7 +14,7 @@
     <p><b>Compose Wrapper</b> is an IntelliJ/Android Studio plugin that allows you to quickly wrap your Composable functions (like Text, Button, Image, etc.) with common layout containers.</p>
 
     <p align="center">
-      <img src="https://raw.githubusercontent.com/username/repo/main/screenshots/demo.gif" width="600">
+      <img src="https://private-user-images.githubusercontent.com/11981337/528299503-69252140-feb4-4186-ac80-4754b3e5c657.gif?jwt=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3NjYwOTAyMzUsIm5iZiI6MTc2NjA4OTkzNSwicGF0aCI6Ii8xMTk4MTMzNy81MjgyOTk1MDMtNjkyNTIxNDAtZmViNC00MTg2LWFjODAtNDc1NGIzZTVjNjU3LmdpZj9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNTEyMTglMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjUxMjE4VDIwMzIxNVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPTk3NjQ0ZTliNDBmNWNlYjg3MWJlMWU2NmVmZTNlMmMwNzAxM2Q1NzJlMDdmZjgzNTMzNmU2MTc5YzdkZDNmMDgmWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0In0.3_J6xjg7ATvIKScW3ZmaE8kHXomJyomguijY1ir8B04" width="600">
     </p>
 
     <h3>🚀 Key Features:</h3>
