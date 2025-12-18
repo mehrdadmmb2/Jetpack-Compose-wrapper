@@ -4,6 +4,8 @@
 
 Tired of manually cutting and pasting code just to wrap a `Text` in a `Column`? This plugin does it for you in two clicks!
 
+![prev](https://github.com/user-attachments/assets/69252140-feb4-4186-ac80-4754b3e5c657)
+
 ---
 
 ## ✨ Features
