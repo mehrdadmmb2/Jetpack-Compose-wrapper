@@ -13,6 +13,10 @@
 
     <p><b>Compose Wrapper</b> is an IntelliJ/Android Studio plugin that allows you to quickly wrap your Composable functions (like Text, Button, Image, etc.) with common layout containers.</p>
 
+    <p align="center">
+      <img src="https://raw.githubusercontent.com/username/repo/main/screenshots/demo.gif" width="600">
+    </p>
+
     <h3>🚀 Key Features:</h3>
     <ul>
         <li><b>Instant Wrapping:</b> Quickly wrap any Composable with Row, Column, Box, LazyRow, or LazyColumn.</li>
@@ -24,7 +28,7 @@
     <p>This project is <b>open-source</b>! We welcome all kinds of contributions, whether it's reporting a bug, suggesting a feature, or submitting a Pull Request.</p>
 
     <p>🌐 <b>GitHub Repository:</b>
-       <a href="https://github.com/YOUR_USERNAME/YOUR_REPO_NAME">github.com/YOUR_USERNAME/YOUR_REPO_NAME</a>
+       <a href="https://github.com/mehrdadmmb2/Jetpack-Compose-wrapper/>github.com/mehrdadmmb2/Jetpack-Compose-wrapper/</a>
     </p>
 <p>Created with ❤️ for Jetpack Compose developers.</p>
 
