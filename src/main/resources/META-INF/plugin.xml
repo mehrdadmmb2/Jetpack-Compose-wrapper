@@ -1,0 +1,56 @@
+<idea-plugin>
+    <id>com.mmb.compose.compose_wrapper</id>
+    <name>Compose Wrapper</name>
+    <vendor>Mehrdad</vendor>
+
+    <depends>com.intellij.modules.platform</depends>
+    <depends>org.jetbrains.kotlin</depends>
+
+    <description><![CDATA[
+
+<h2>Jetpack Compose Wrapper</h2>
+    <p>Speed up your Compose development with this handy productivity tool!</p>
+
+    <p><b>Compose Wrapper</b> is an IntelliJ/Android Studio plugin that allows you to quickly wrap your Composable functions (like Text, Button, Image, etc.) with common layout containers.</p>
+
+    <h3>🚀 Key Features:</h3>
+    <ul>
+        <li><b>Instant Wrapping:</b> Quickly wrap any Composable with Row, Column, Box, LazyRow, or LazyColumn.</li>
+        <li><b>Smart Imports:</b> Automatically adds the necessary Jetpack Compose imports to your file.</li>
+        <li><b>Auto-Formatting:</b> Cleans up and reformats the code immediately after wrapping.</li>
+    </ul>
+
+    <h3>🤝 Contribute & Support</h3>
+    <p>This project is <b>open-source</b>! We welcome all kinds of contributions, whether it's reporting a bug, suggesting a feature, or submitting a Pull Request.</p>
+
+    <p>🌐 <b>GitHub Repository:</b>
+       <a href="https://github.com/YOUR_USERNAME/YOUR_REPO_NAME">github.com/YOUR_USERNAME/YOUR_REPO_NAME</a>
+    </p>
+<p>Created with ❤️ for Jetpack Compose developers.</p>
+
+    <hr>
+    <h3>🫶 Support This Project</h3>
+    <p>If you find this tool helpful, you can support its future development:</p>
+
+    <p>☕ <b>Buy me a coffee (Crypto):</b></p>
+    <ul>
+        <li><b>Tether (USDT-TRC20):</b> <code>TRzxqih3wSjPkb8EmrF7TzAvSquGhf1wwo</code></li>
+        <li><b>Bitcoin (BTC):</b> <code>bc1qxk0h9rdpgnh7yyc59uxndkrr2ndjglwtv3z72j</code></li>
+    </ul>
+
+    <p>Or simply ⭐ <b>star the repository</b> on GitHub — it means a lot!</p>
+
+
+    ]]></description>
+
+
+
+    <extensions defaultExtensionNs="com.intellij">
+        <intentionAction>
+            <language>kotlin</language>
+            <className>com.mmb.compose.compose_wrapper.WrapWithComposableIntention</className>
+            <category>Compose android</category>
+            <skipBeforeAfter>true</skipBeforeAfter>
+        </intentionAction>
+    </extensions>
+</idea-plugin>
