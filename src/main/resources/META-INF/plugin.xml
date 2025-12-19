@@ -1,4 +1,4 @@
-<idea-plugin>
+<idea-plugin since-build="231" until-build="262.*">
     <id>com.mmb.compose.compose_wrapper</id>
     <name>Compose Wrapper</name>
     <vendor>Mehrdad</vendor>
