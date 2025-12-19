@@ -1,8 +1,8 @@
-<idea-plugin >
+<idea-plugin>
     <id>com.mmb.compose.compose_wrapper</id>
     <name>Compose Wrapper</name>
     <vendor>Mehrdad</vendor>
-    <idea-version since-build="252" until-build="261.*" />
+
     <depends>com.intellij.modules.platform</depends>
     <depends>org.jetbrains.kotlin</depends>
 
@@ -32,12 +32,12 @@
 
 
     <extensions defaultExtensionNs="com.intellij">
+
         <intentionAction>
             <language>kotlin</language>
             <className>com.mmb.compose.compose_wrapper.WrapWithComposableIntention</className>
             <category>Compose android</category>
             <skipBeforeAfter>true</skipBeforeAfter>
         </intentionAction>
-        <kotlin.supportsKotlinK2Mode>true</kotlin.supportsKotlinK2Mode>
     </extensions>
 </idea-plugin>

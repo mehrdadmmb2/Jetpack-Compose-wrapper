@@ -1,7 +1,7 @@
 plugins {
     id("java")
     id("org.jetbrains.kotlin.jvm") version "1.9.24"
-    id("org.jetbrains.intellij") version "1.17.3"
+    id("org.jetbrains.intellij") version "1.17.4"
 }
 
 group = "com.mmb.compose"
@@ -39,10 +39,7 @@ tasks {
     patchPluginXml {
         sinceBuild.set("231")
         untilBuild.set("252.*")
-        pluginDescription.set("""
-        <p>Your description here...</p>
-        <kotlin.supportsKotlinK2Mode/>
-    """.trimIndent())
+
     }
 
     signPlugin {
@@ -53,5 +50,9 @@ tasks {
 
     publishPlugin {
         token.set(System.getenv("PUBLISH_TOKEN"))
+    }
+
+    named("buildSearchableOptions") {
+        enabled = false
     }
 }
