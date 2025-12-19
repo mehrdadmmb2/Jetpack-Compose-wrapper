@@ -1,16 +1,20 @@
 package com.mmb.compose.compose_wrapper
 
-import com.intellij.codeInsight.intention.impl.BaseIntentionAction
-import com.intellij.psi.PsiFile
 import com.intellij.codeInsight.intention.PsiElementBaseIntentionAction
 import com.intellij.openapi.editor.Editor
 import com.intellij.openapi.project.Project
 import com.intellij.psi.PsiElement
+import com.intellij.psi.PsiFile
 import com.intellij.psi.codeStyle.CodeStyleManager
 import com.intellij.psi.util.PsiTreeUtil
-import com.intellij.openapi.ui.Messages
+import com.intellij.openapi.ui.popup.JBPopupFactory
+import com.intellij.openapi.command.WriteCommandAction
+import org.jetbrains.kotlin.name.FqName
 import org.jetbrains.kotlin.psi.KtCallExpression
+import org.jetbrains.kotlin.psi.KtFile
 import org.jetbrains.kotlin.psi.KtPsiFactory
+import org.jetbrains.kotlin.psi.KtImportDirective
+import org.jetbrains.kotlin.resolve.ImportPath
 
 class WrapWithComposableIntention : PsiElementBaseIntentionAction() {
 
@@ -18,46 +22,34 @@ class WrapWithComposableIntention : PsiElementBaseIntentionAction() {
     override fun getFamilyName(): String = "Jetpack Compose Wrappers"
 
     override fun isAvailable(project: Project, editor: Editor?, element: PsiElement): Boolean {
-        return true
+        return PsiTreeUtil.getParentOfType(element, KtCallExpression::class.java) != null
     }
+
+    override fun startInWriteAction(): Boolean = false
 
     override fun invoke(project: Project, editor: Editor?, element: PsiElement) {
         val file = element.containingFile
+        val callExpression = PsiTreeUtil.getParentOfType(element, KtCallExpression::class.java) ?: return
+        val currentEditor = editor ?: return
 
-        val callExpression = com.intellij.psi.util.PsiTreeUtil.getParentOfType(
-            element,
-            org.jetbrains.kotlin.psi.KtCallExpression::class.java
-        )
+        val choices = listOf("Row", "Column", "Box", "LazyRow", "LazyColumn")
 
-        if (callExpression == null) {
-            com.intellij.openapi.ui.Messages.showErrorDialog(
-                project,
-                "نشانگر موس باید روی یک تابع کامپوزابل (مثل Text) باشد",
-                "خطا"
-            )
-            return
-        }
-
-        val choices = arrayOf("Row", "Column", "Box", "LazyRow", "LazyColumn")
-        com.intellij.openapi.ui.popup.JBPopupFactory.getInstance()
-            .createPopupChooserBuilder(choices.toList())
+        JBPopupFactory.getInstance()
+            .createPopupChooserBuilder(choices)
             .setTitle("Wrap with...")
             .setItemChosenCallback { selected ->
-                com.intellij.openapi.command.WriteCommandAction.runWriteCommandAction(project) {
+                WriteCommandAction.runWriteCommandAction(project) {
                     wrapCode(project, file, callExpression, selected)
                 }
             }
             .createPopup()
-            .showInBestPositionFor(editor!!)
-
+            .showInBestPositionFor(currentEditor)
     }
 
-    override fun startInWriteAction(): Boolean = true
-
     private fun wrapCode(project: Project, file: PsiFile, callExpression: KtCallExpression, selected: String) {
-        val factory = org.jetbrains.kotlin.psi.KtPsiFactory(project)
+        val factory = KtPsiFactory(project)
         val originalCode = callExpression.text
-        val ktFile = file as org.jetbrains.kotlin.psi.KtFile
+        val ktFile = file as? KtFile ?: return
 
         val newCode = when (selected) {
             "Row" -> "Row {\n $originalCode \n}"
@@ -71,24 +63,30 @@ class WrapWithComposableIntention : PsiElementBaseIntentionAction() {
         val newExpression = factory.createExpression(newCode)
         val replaced = callExpression.replace(newExpression)
 
-
-        val importsToAdd = when (selected) {
-            "Row" -> listOf("androidx.compose.foundation.layout.Row")
-            "Column" -> listOf("androidx.compose.foundation.layout.Column")
-            "Box" -> listOf("androidx.compose.foundation.layout.Box")
-            "LazyRow" -> listOf("androidx.compose.foundation.lazy.LazyRow")
-            "LazyColumn" -> listOf("androidx.compose.foundation.lazy.LazyColumn")
-            else -> emptyList()
+        val fqNameString = when (selected) {
+            "Row", "Column", "Box" -> "androidx.compose.foundation.layout.$selected"
+            "LazyRow", "LazyColumn" -> "androidx.compose.foundation.lazy.$selected"
+            else -> null
         }
 
-        importsToAdd.forEach { fqName ->
-            val importPath = org.jetbrains.kotlin.resolve.ImportPath(org.jetbrains.kotlin.name.FqName(fqName), false)
-            if (ktFile.importDirectives.none { it.importPath == importPath }) {
+        fqNameString?.let { fqNameStr ->
+            val fqName = FqName(fqNameStr)
+            val importPath = ImportPath(fqName, false)
+
+            val alreadyImported = ktFile.importDirectives.any { it.importPath?.pathStr == fqNameStr }
+
+            if (!alreadyImported) {
                 val newImport = factory.createImportDirective(importPath)
-                ktFile.importList?.add(newImport) ?: ktFile.addBefore(newImport, ktFile.firstChild)
+
+                val importList = ktFile.importList
+                if (importList != null) {
+                    importList.add(newImport)
+                } else {
+                    ktFile.packageDirective?.let { ktFile.addAfter(newImport, it) }
+                }
             }
         }
 
-        com.intellij.psi.codeStyle.CodeStyleManager.getInstance(project).reformat(replaced)
+        CodeStyleManager.getInstance(project).reformat(replaced)
     }
 }
