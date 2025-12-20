@@ -32,6 +32,7 @@
 
 
     <extensions defaultExtensionNs="com.intellij">
+        <org.jetbrains.kotlin.supportsKotlinPluginMode>K2</org.jetbrains.kotlin.supportsKotlinPluginMode>
 
         <intentionAction>
             <language>kotlin</language>
