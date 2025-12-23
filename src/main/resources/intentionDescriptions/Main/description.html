@@ -7,9 +7,10 @@ This intention allows quick wrapping of common composables like Text, Button, or
 
 Place the caret on the composable name (e.g., Text), press Alt+Enter, and select the desired wrapper from the dialog.
 <br>
-textText("Hello World")
-textColumn {
 Text("Hello World")
+
+Column {
+    Text("Hello World")
 }
 <br>
 This intention is available only inside @Composable functions and on supported composables.
