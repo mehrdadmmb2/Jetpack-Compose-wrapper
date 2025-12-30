@@ -55,6 +55,8 @@ class WrapWithComposableIntention : PsiElementBaseIntentionAction() {
             "Row" -> "Row {\n $originalCode \n}"
             "Column" -> "Column {\n $originalCode \n}"
             "Box" -> "Box {\n $originalCode \n}"
+            "Card" -> "Card {\n $originalCode \n}"
+            "Surface" -> "Surface {\n $originalCode \n}"
             "LazyRow" -> "LazyRow {\n item { $originalCode } \n}"
             "LazyColumn" -> "LazyColumn {\n item { $originalCode } \n}"
             else -> return
@@ -66,6 +68,7 @@ class WrapWithComposableIntention : PsiElementBaseIntentionAction() {
         val fqNameString = when (selected) {
             "Row", "Column", "Box" -> "androidx.compose.foundation.layout.$selected"
             "LazyRow", "LazyColumn" -> "androidx.compose.foundation.lazy.$selected"
+            "Surface","Card" -> "androidx.compose.material3.$selected"
             else -> null
         }
 
