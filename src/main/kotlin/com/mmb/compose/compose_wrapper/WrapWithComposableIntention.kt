@@ -32,7 +32,8 @@ class WrapWithComposableIntention : PsiElementBaseIntentionAction() {
         val callExpression = PsiTreeUtil.getParentOfType(element, KtCallExpression::class.java) ?: return
         val currentEditor = editor ?: return
 
-        val choices = listOf("Row", "Column", "Box", "LazyRow", "LazyColumn")
+        val choices = listOf("Row", "Column", "Box", "LazyRow", "LazyColumn","Card",
+                "Surface")
 
         JBPopupFactory.getInstance()
             .createPopupChooserBuilder(choices)
