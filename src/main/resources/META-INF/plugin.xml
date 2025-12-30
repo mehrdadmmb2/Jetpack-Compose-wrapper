@@ -9,10 +9,8 @@
     <description><![CDATA[
 <p><b>Turbocharge your Jetpack Compose workflow!</b></p>
 
-    <p>Quickly wrap your Composables with <code>Row</code>, <code>Column</code>, <code>Box</code>, or <code>Lazy</code> layouts using a single shortcut.</p>
-    <p>
-      <img src="https://github.com/mehrdadmmb2/Jetpack-Compose-wrapper/releases/download/V0.1.6/528299503-69252140-feb4-4186-ac80-4754b3e5c657.gif">
-    </p>
+    <p>Quickly wrap your Composables with <code>Row</code>, <code>Column</code>, <code>Box</code>,<code>Card</code>,<code>Surface</code>, or <code>Lazy</code> layouts using a single shortcut.</p>
+
     <h3>⚡ Key Features:</h3>
     <ul>
         <li><b>Instant Wrap:</b> Press <i>Alt + Enter</i> to wrap code in seconds.</li>
