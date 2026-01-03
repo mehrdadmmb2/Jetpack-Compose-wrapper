@@ -1,46 +1,50 @@
 plugins {
     id("java")
-    id("org.jetbrains.kotlin.jvm") version "1.9.24"
-    id("org.jetbrains.intellij") version "1.17.4"
+    id("org.jetbrains.kotlin.jvm") version "2.0.20"
+    id("org.jetbrains.intellij.platform") version "2.0.1"  
 }
 
 group = "com.mmb.compose"
-
-version = "0.1.7"
+version = "0.1.8"
 
 repositories {
     mavenCentral()
-    maven("https://www.jetbrains.com/intellij-repository/releases")
-    maven("https://cache-redirector.jetbrains.com/intellij-dependencies")
+
+    intellijPlatform {
+        defaultRepositories()
+    }
 }
 
 dependencies {
+    intellijPlatform {
+        
+        androidStudio("2025.2.2.7")
 
-}
-
-// Configure Gradle IntelliJ Plugin
-// Read more: https://plugins.jetbrains.com/docs/intellij/tools-gradle-intellij-plugin.html
-intellij {
-    version.set("2023.3.2.2")
-    type.set("AI") // Target IDE Platform
-    plugins.set(listOf("org.jetbrains.kotlin"))
-
+        
+        bundledPlugin("org.jetbrains.kotlin")
+        bundledPlugin("org.jetbrains.android")  
+    }
 }
 
 tasks {
-    // Set the JVM compatibility versions
     withType<JavaCompile> {
         sourceCompatibility = "21"
         targetCompatibility = "21"
     }
+
     withType<org.jetbrains.kotlin.gradle.tasks.KotlinCompile> {
-        kotlinOptions.jvmTarget = "21"
+        compilerOptions {
+            jvmTarget.set(org.jetbrains.kotlin.gradle.dsl.JvmTarget.JVM_21)
+        }
     }
 
     patchPluginXml {
-        sinceBuild.set("231")
-        untilBuild.set("262.*")
+        sinceBuild.set("251")   
+        untilBuild.set("253.*") 
+    }
 
+    buildSearchableOptions {
+        enabled = false
     }
 
     signPlugin {
@@ -51,9 +55,5 @@ tasks {
 
     publishPlugin {
         token.set(System.getenv("PUBLISH_TOKEN"))
-    }
-
-    named("buildSearchableOptions") {
-        enabled = false
     }
 }
