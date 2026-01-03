@@ -31,7 +31,8 @@
 
     <extensions defaultExtensionNs="com.intellij">
         <org.jetbrains.kotlin.supportsKotlinPluginMode>K1_AND_K2</org.jetbrains.kotlin.supportsKotlinPluginMode>
-
+        <kotlin.pluginCompatibility
+                supportsK2="true"/>
         <intentionAction>
             <language>kotlin</language>
             <className>com.mmb.compose.compose_wrapper.WrapWithComposableIntention</className>
