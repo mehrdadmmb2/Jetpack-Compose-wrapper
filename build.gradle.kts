@@ -6,7 +6,7 @@ plugins {
 
 group = "com.mmb.compose"
 
-version = "0.1.7"
+version = "1.0.0"
 
 repositories {
     mavenCentral()
