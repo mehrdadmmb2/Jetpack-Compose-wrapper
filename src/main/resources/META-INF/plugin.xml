@@ -28,10 +28,11 @@
     ]]></description>
 
 
+    <extensions defaultExtensionNs="org.jetbrains.kotlin">
+        <supportsKotlinPluginMode supportsK1="true" supportsK2="true" />
+    </extensions>
 
     <extensions defaultExtensionNs="com.intellij">
-        <org.jetbrains.kotlin.supportsKotlinPluginMode>K1_AND_K2</org.jetbrains.kotlin.supportsKotlinPluginMode>
-
         <intentionAction>
             <language>kotlin</language>
             <className>com.mmb.compose.compose_wrapper.WrapWithComposableIntention</className>
