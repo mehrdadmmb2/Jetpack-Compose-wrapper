@@ -1,6 +1,6 @@
 <idea-plugin since-build="231" until-build="262.*">
     <id>com.mmb.compose.compose_wrapper</id>
-    <name>Compose Wrapper</name>
+    <name>Jetpack Compose Wrapper</name>
     <vendor>Mehrdad</vendor>
 
     <depends>com.intellij.modules.platform</depends>
@@ -10,6 +10,7 @@
 <p><b>Turbocharge your Jetpack Compose workflow!</b></p>
 
     <p>Quickly wrap your Composables with <code>Row</code>, <code>Column</code>, <code>Box</code>,<code>Card</code>,<code>Surface</code>, or <code>Lazy</code> layouts using a single shortcut.</p>
+    <p>Quick unwrap (remove parent composable)</p>
 
     <h3>⚡ Key Features:</h3>
     <ul>
@@ -39,5 +40,11 @@
             <category>Compose android</category>
             <skipBeforeAfter>true</skipBeforeAfter>
         </intentionAction>
+        <intentionAction>
+            <className>com.mmb.compose.compose_wrapper.UnwrapComposableIntention</className>
+            <category>Compose android</category>
+            <skipBeforeAfter>true</skipBeforeAfter>
+        </intentionAction>
+
     </extensions>
 </idea-plugin>

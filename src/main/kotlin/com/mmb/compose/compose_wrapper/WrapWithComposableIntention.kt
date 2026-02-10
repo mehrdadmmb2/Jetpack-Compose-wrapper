@@ -33,7 +33,7 @@ class WrapWithComposableIntention : PsiElementBaseIntentionAction() {
         val currentEditor = editor ?: return
 
         val choices = listOf("Row", "Column", "Box", "LazyRow", "LazyColumn","Card",
-                "Surface")
+            "Surface")
 
         JBPopupFactory.getInstance()
             .createPopupChooserBuilder(choices)
