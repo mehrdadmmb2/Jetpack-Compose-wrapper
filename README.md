@@ -51,7 +51,10 @@ Contributions are what make the open-source community such an amazing place to l
 
 If you find this project helpful and want to support its future development:
 
-### ☕ Buy me a coffee (Crypto)
+### ☕ Buy me a coffee
+
+ [<img width="200" height="200"   src="https://github.com/user-attachments/assets/2b93c47d-a37b-4d3f-951e-8623fc597830">](https://donat.to/StreamerPage?u=mehrdadmmb2)
+
 
 - **Tether (USDT, TRC20):** `TRzxqih3wSjPkb8EmrF7TzAvSquGhf1wwo`
 - **Bitcoin (BTC):** `bc1qxk0h9rdpgnh7yyc59uxndkrr2ndjglwtv3z72j`
